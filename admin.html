@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabbir Photography - Admin Panel</title>
+    <style>
+        :root { --primary: #007bff; --bg: #121212; --card: #1e1e1e; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .admin-box { background: var(--card); padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
+        h2 { text-align: center; color: var(--primary); margin-bottom: 25px; }
+        input, textarea, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 14px; }
+        input, textarea { background: #2d2d2d; color: white; outline: none; border: 1px solid #444; }
+        input:focus { border-color: var(--primary); }
+        button { background: var(--primary); color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #0056b3; transform: translateY(-2px); }
+        .hidden { display: none; }
+        #status { text-align: center; font-size: 13px; margin-top: 10px; color: #aaa; }
+    </style>
+</head>
+<body>
+
+<div class="admin-box">
+    <h2>🔒 Admin Console</h2>
+    
+    <div id="login-section">
+        <input type="email" id="login-email" placeholder="আপনার ইমেইল">
+        <input type="password" id="login-pass" placeholder="পাসওয়ার্ড">
+        <button id="btn-login">লগইন করুন</button>
+    </div>
+
+    <div id="dashboard-section" class="hidden">
+        <p style="text-align:center;">স্বাগতম, <strong>সাব্বির</strong>!</p>
+        <hr style="border: 0.5px solid #333;">
+        
+        <label>নতুন ছবি আপলোড দিন:</label>
+        <input type="file" id="image-file" accept="image/*">
+        <button id="btn-upload">গ্যালারিতে যোগ করুন</button>
+
+        <hr style="border: 0.5px solid #333;">
+        
+        <label>রিসেন্ট নিউজ আপডেট:</label>
+        <textarea id="news-text" rows="3" placeholder="আজকের আপডেট এখানে লিখুন..."></textarea>
+        <button id="btn-news">নিউজ পাবলিশ করুন</button>
+        
+        <p id="status"></p>
+        <button onclick="location.reload()" style="background:#444; font-size:12px;">লগ আউট</button>
+    </div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+
+    // তোমার সেই কপি করা কনফিগারেশন
+   const firebaseConfig = {
+  apiKey: "AIzaSyBXF3QjvxBC2OBybo8LXDtG-rcMBMOIOwc",
+  authDomain: "sabbir-photography.firebaseapp.com",
+  projectId: "sabbir-photography",
+  storageBucket: "sabbir-photography.firebasestorage.app",
+  messagingSenderId: "390744341973",
+  appId: "1:390744341973:web:26f04c66ecbcb11411915c", // পুরো আইডিটি বসাও
+  measurementId: "G-8ZMF83LP59"
+}; // এখানে ব্র্যাকেট এবং সেমিকোলন দাও
