@@ -1,106 +1,265 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabbir Photography - Admin Panel</title>
+    <title>Admin Dashboard - Sabbir Photography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #007bff; --bg: #121212; --card: #1e1e1e; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .admin-box { background: var(--card); padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
-        h2 { text-align: center; color: var(--primary); margin-bottom: 25px; }
-        input, textarea, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 14px; }
-        input, textarea { background: #2d2d2d; color: white; outline: none; border: 1px solid #444; }
-        .pass-container { position: relative; }
-        #togglePassword { position: absolute; right: 10px; top: 18px; cursor: pointer; color: #aaa; }
-        button { background: var(--primary); color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #0056b3; }
-        .hidden { display: none; }
-        #status { text-align: center; font-size: 13px; margin-top: 10px; color: #aaa; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #cbd5e1; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .loader { border-top-color: #ec4899; -webkit-animation: spinner 1.5s linear infinite; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
 
-<div class="admin-box">
-    <h2>🔒 Admin Console</h2>
-    
-    <div id="login-section">
-        <input type="email" id="login-email" placeholder="আপনার ইমেইল">
-        <div class="pass-container">
-            <input type="password" id="login-pass" placeholder="পাসওয়ার্ড">
-            <span id="togglePassword">👁️</span>
+    <div id="login-section" class="w-full max-w-md glass-card p-8 rounded-2xl shadow-2xl transition-all duration-500">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 mb-2">Welcome Back</h1>
+            <p class="text-slate-400">Login to manage your portfolio</p>
         </div>
-        <button id="btn-login">লগইন করুন</button>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-slate-400 mb-1">Email</label>
+                <input type="email" id="login-email" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:border-pink-500 text-white transition-colors" placeholder="admin@example.com">
+            </div>
+            <div class="relative">
+                <label class="block text-sm font-medium text-slate-400 mb-1">Password</label>
+                <input type="password" id="login-pass" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:border-pink-500 text-white transition-colors" placeholder="••••••••">
+                <button id="togglePassword" class="absolute right-3 top-9 text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+            <button id="btn-login" class="w-full bg-gradient-to-r from-pink-600 to-violet-600 hover:from-pink-500 hover:to-violet-500 text-white font-bold py-3 rounded-lg shadow-lg transform transition hover:-translate-y-1 mt-4">
+                Login Dashboard
+            </button>
+        </div>
     </div>
 
-    <div id="dashboard-section" class="hidden">
-        <p style="text-align:center;">স্বাগতম, <strong>সাব্বির</strong>!</p>
-        <hr style="border: 0.5px solid #333;">
-        <label>নতুন ছবি আপলোড:</label>
-        <input type="file" id="image-file" accept="image/*">
-        <button id="btn-upload">গ্যালারিতে যোগ করুন</button>
-        <hr style="border: 0.5px solid #333;">
-        <label>রিসেন্ট নিউজ আপডেট:</label>
-        <textarea id="news-text" rows="3" placeholder="আজকের আপডেট..."></textarea>
-        <button id="btn-news">নিউজ পাবলিশ করুন</button>
-        <p id="status"></p>
-        <button onclick="auth.signOut().then(() => location.reload())" style="background:#444;">লগ আউট</button>
+    <div id="dashboard-section" class="w-full max-w-6xl hidden animate-fade-in">
+        
+        <nav class="glass-card rounded-xl p-4 mb-8 flex justify-between items-center shadow-lg">
+            <h2 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-violet-400">
+                <i class="fa-solid fa-camera-retro mr-2 text-white"></i> Admin Console
+            </h2>
+            <button onclick="logout()" class="text-sm bg-slate-800 hover:bg-red-500/20 hover:text-red-400 text-slate-300 px-4 py-2 rounded-lg transition-all border border-slate-700">
+                <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+            </button>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-1">
+                <div class="glass-card p-6 rounded-xl shadow-lg sticky top-6">
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">
+                        <i class="fa-solid fa-cloud-arrow-up mr-2 text-pink-500"></i> Upload New Photo
+                    </h3>
+                    
+                    <div class="border-2 border-dashed border-slate-600 rounded-xl p-8 text-center hover:border-pink-500 transition-colors cursor-pointer relative" id="drop-zone">
+                        <input type="file" id="image-file" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        <i class="fa-regular fa-image text-4xl text-slate-500 mb-3"></i>
+                        <p class="text-sm text-slate-400">Click to select or drag image here</p>
+                        <p id="file-name" class="text-xs text-pink-400 mt-2 font-mono"></p>
+                    </div>
+
+                    <button id="btn-upload" class="w-full mt-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-lg border border-slate-600 transition-all flex justify-center items-center gap-2">
+                        <span>Upload to Gallery</span>
+                    </button>
+                    <p id="status" class="text-center text-xs mt-3 text-slate-400 min-h-[20px]"></p>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl shadow-lg mt-6">
+                     <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">
+                        <i class="fa-solid fa-newspaper mr-2 text-blue-500"></i> Post News
+                    </h3>
+                    <textarea id="news-text" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm focus:outline-none focus:border-blue-500 mb-3" placeholder="Write your update..."></textarea>
+                    <button id="btn-news" class="w-full bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 border border-blue-500/50 py-2 rounded-lg transition-all">
+                        Publish News
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <div class="glass-card p-6 rounded-xl shadow-lg min-h-[500px]">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-semibold text-white">
+                            <i class="fa-solid fa-images mr-2 text-violet-500"></i> Manage Gallery
+                        </h3>
+                        <span id="photo-count" class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-400">Loading...</span>
+                    </div>
+
+                    <div id="admin-gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, collection, addDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, doc, deleteDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyBXF3QjvxBC2OBybo8LXDtG-rcMBMOIOwc",
-        authDomain: "sabbir-photography.firebaseapp.com",
-        projectId: "sabbir-photography",
-        storageBucket: "sabbir-photography.firebasestorage.app",
-        messagingSenderId: "390744341973",
-        appId: "1:390744341973:web:26f04c66ecbcb11411915c",
-        measurementId: "G-8ZMF83LP59"
-    };
+        // তোমার কনফিগারেশন
+        const firebaseConfig = {
+            apiKey: "AIzaSyBXF3QjvxBC2OBybo8LXDtG-rcMBMOIOwc",
+            authDomain: "sabbir-photography.firebaseapp.com",
+            projectId: "sabbir-photography",
+            storageBucket: "sabbir-photography.firebasestorage.app",
+            messagingSenderId: "390744341973",
+            appId: "1:390744341973:web:26f04c66ecbcb11411915c",
+            measurementId: "G-8ZMF83LP59"
+        };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const storage = getStorage(app);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
 
-    // পাসওয়ার্ড টগল লজিক
-    const togglePassword = document.querySelector('#togglePassword');
-    const passwordInput = document.querySelector('#login-pass');
-    togglePassword.onclick = () => {
-        const type = passwordInput.type === 'password' ? 'text' : 'password';
-        passwordInput.type = type;
-        togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
-    };
+        // UI Elements
+        const loginSection = document.getElementById('login-section');
+        const dashboardSection = document.getElementById('dashboard-section');
+        const status = document.getElementById('status');
+        const fileInput = document.getElementById('image-file');
 
-    // লগইন লজিক
-    document.getElementById('btn-login').onclick = () => {
-        const email = document.getElementById('login-email').value;
-        const pass = passwordInput.value;
-        const btn = document.getElementById('btn-login');
-        btn.innerText = "চেক করা হচ্ছে...";
+        // 1. LOGIN LOGIC
+        document.getElementById('btn-login').onclick = () => {
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-pass').value;
+            const btn = document.getElementById('btn-login');
+            
+            btn.innerHTML = '<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5 mx-auto"></div>';
+            
+            signInWithEmailAndPassword(auth, email, pass)
+                .catch((error) => {
+                    btn.innerHTML = 'Login Dashboard';
+                    alert("Error: " + error.message);
+                });
+        };
 
-        signInWithEmailAndPassword(auth, email, pass)
-            .catch((error) => {
-                btn.innerText = "লগইন করুন";
-                alert("ভুল ইমেইল বা পাসওয়ার্ড!");
+        // Auth State Listener
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginSection.classList.add('hidden');
+                dashboardSection.classList.remove('hidden');
+                dashboardSection.classList.add('flex', 'flex-col');
+                loadGallery(); // Load images when logged in
+            } else {
+                loginSection.classList.remove('hidden');
+                dashboardSection.classList.add('hidden');
+            }
+        });
+
+        // Logout Function
+        window.logout = () => signOut(auth).then(() => location.reload());
+
+        // Password Toggle
+        document.getElementById('togglePassword').onclick = function() {
+            const passInput = document.getElementById('login-pass');
+            const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="fa-solid fa-eye-slash"></i>';
+        };
+
+        // File Input Animation
+        fileInput.addEventListener('change', (e) => {
+            if(e.target.files[0]) document.getElementById('file-name').innerText = e.target.files[0].name;
+        });
+
+        // 2. UPLOAD LOGIC
+        document.getElementById('btn-upload').onclick = async () => {
+            const file = fileInput.files[0];
+            if (!file) return alert("Please select an image first!");
+
+            status.innerHTML = '<span class="text-yellow-400"><i class="fa-solid fa-spinner fa-spin"></i> Uploading...</span>';
+            
+            // Create a unique name for Storage
+            const storagePath = 'gallery/' + Date.now() + "_" + file.name;
+            const storageRef = ref(storage, storagePath);
+            
+            try {
+                // Upload to Storage
+                const snapshot = await uploadBytes(storageRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+
+                // Save info to Firestore with storagePath (needed for deletion)
+                await addDoc(collection(db, "photos"), { 
+                    url: url, 
+                    time: new Date(),
+                    storagePath: storagePath // Important for delete
+                });
+
+                status.innerHTML = '<span class="text-green-400"><i class="fa-solid fa-check"></i> Success!</span>';
+                fileInput.value = "";
+                document.getElementById('file-name').innerText = "";
+                setTimeout(() => status.innerText = "", 3000);
+
+            } catch (e) {
+                console.error(e);
+                status.innerHTML = '<span class="text-red-400">Upload Failed!</span>';
+            }
+        };
+
+        // 3. READ & DELETE LOGIC (Real-time)
+        function loadGallery() {
+            const galleryGrid = document.getElementById('admin-gallery-grid');
+            const q = query(collection(db, "photos"), orderBy("time", "desc"));
+
+            onSnapshot(q, (snapshot) => {
+                galleryGrid.innerHTML = "";
+                document.getElementById('photo-count').innerText = snapshot.size + " Photos";
+
+                snapshot.forEach((docSnap) => {
+                    const photo = docSnap.data();
+                    const docId = docSnap.id;
+                    
+                    const div = document.createElement('div');
+                    div.className = "group relative rounded-lg overflow-hidden border border-slate-700 aspect-square";
+                    div.innerHTML = `
+                        <img src="${photo.url}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
+                            <a href="${photo.url}" target="_blank" class="text-white bg-slate-700 p-2 rounded-full hover:bg-slate-600"><i class="fa-solid fa-expand"></i></a>
+                            <button onclick="deletePhoto('${docId}', '${photo.storagePath}')" class="text-white bg-red-600 p-2 rounded-full hover:bg-red-700 shadow-lg">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    `;
+                    galleryGrid.appendChild(div);
+                });
             });
-    };
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            document.getElementById('login-section').classList.add('hidden');
-            document.getElementById('dashboard-section').classList.remove('hidden');
         }
-    });
 
-    // ইমেজ আপলোড এবং নিউজ আপডেট লজিক আগের মতোই কাজ করবে
-    // (সংক্ষিপ্ত করার জন্য এখানে শুধু মেইন পার্টটুকু দেওয়া হয়েছে)
-</script>
+        // Global Delete Function
+        window.deletePhoto = async (docId, storagePath) => {
+            if(!confirm("Are you sure you want to delete this photo permanently?")) return;
+
+            try {
+                // 1. Delete from Firestore
+                await deleteDoc(doc(db, "photos", docId));
+                
+                // 2. Delete from Storage (if path exists)
+                if(storagePath) {
+                    const imageRef = ref(storage, storagePath);
+                    await deleteObject(imageRef);
+                }
+                alert("Photo deleted successfully!");
+            } catch (e) {
+                console.error(e);
+                alert("Error deleting photo: " + e.message);
+            }
+        };
+
+        // News Logic
+        document.getElementById('btn-news').onclick = async () => {
+            const text = document.getElementById('news-text').value;
+            if(!text) return;
+            // Add news logic here similar to upload...
+            alert("News feature pending...");
+        };
+    </script>
 </body>
 </html>
