@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabbir Photography Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="img file/favicon-removebg-preview.png">
+
+</head>
+<body class="bg-slate-900 text-slate-200">
+
+    <header class="shadow-md shadow-slate-700 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" onclick="showPage('home'); return false;" class="text-2xl font-bold text-white hover:text-transparent section-title transition duration-300">Sabbir Photography</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" onclick="showPage('home'); return false;" class="text-slate-300 hover:text-pink-400 font-medium transition duration-300">Home</a>
+                <a href="#" onclick="showPage('gallery'); return false;" class="text-slate-300 hover:text-pink-400 font-medium transition duration-300">Gallery</a>
+                <a href="#" onclick="showPage('news'); return false;" class="text-slate-300 hover:text-pink-400 font-medium transition duration-300">News</a>
+                <a href="#" onclick="showPage('contact'); return false;" class="text-slate-300 hover:text-pink-400 font-medium transition duration-300">Contact</a>
+                <div class="h-6 w-px bg-slate-600 mx-2"></div>
+                <div class="flex space-x-3 items-center">
+                     <a href="https://www.facebook.com/tarikuzzaman.sabbir.01" target="_blank" rel="noopener noreferrer" class="social-icon text-blue-400" aria-label="Facebook Profile"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                     <a href="https://www.instagram.com/tarikuzzamansabbir/" target="_blank" rel="noopener noreferrer" class="social-icon text-pink-400" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465 2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.001 1.802c-2.396 0-2.71.01-3.662.054-1.005.046-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.852-.344 1.857-.044.952-.054 1.266-.054 3.662s.01 2.71.054 3.662c.046 1.005.207 1.504.344 1.857.182.466.398.8.748 1.15.35.35.683.566 1.15.748.353.137.852.3 1.857.344.952.044 1.266.054 3.662.054s2.71-.01 3.662-.054c1.005-.046 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.852.344-1.857.044-.952.054-1.266.054-3.662s-.01-2.71-.054-3.662c-.046-1.005-.207-1.504-.344-1.857-.182-.466-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.852-.3-1.857-.344-.952-.044-1.266-.054-3.662-.054zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg></a>
+                     <a href="https://x.com/Tarikuzzaman555" target="_blank" rel="noopener noreferrer" class="social-icon text-sky-400" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
+                     <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-blue-400" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                 </div>
+            </div>
+
+            <button id="menu-button" class="md:hidden focus:outline-none text-slate-300 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="fixed inset-x-0 top-0 z-40 p-6 bg-slate-800 shadow-lg md:hidden hidden">
+            <div class="flex justify-end mb-4">
+                 <button id="close-menu-button" class="focus:outline-none text-slate-300 hover:text-white">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                 </button>
+            </div>
+            <nav class="flex flex-col space-y-4 text-center">
+                 <a href="#" onclick="showPage('home'); closeMenu(); return false;" class="text-slate-200 hover:text-pink-400 text-lg font-medium transition duration-300">Home</a>
+                 <a href="#" onclick="showPage('gallery'); closeMenu(); return false;" class="text-slate-200 hover:text-pink-400 text-lg font-medium transition duration-300">Gallery</a>
+                 <a href="#" onclick="showPage('news'); closeMenu(); return false;" class="text-slate-200 hover:text-pink-400 text-lg font-medium transition duration-300">News</a>
+                 <a href="#" onclick="showPage('contact'); closeMenu(); return false;" class="text-slate-200 hover:text-pink-400 text-lg font-medium transition duration-300">Contact</a>
+                 <div class="flex justify-center space-x-4 pt-4">
+                    <a href="https://www.facebook.com/tarikuzzaman.sabbir.01" target="_blank" rel="noopener noreferrer" class="social-icon text-blue-400" aria-label="Facebook Profile"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                    <a href="https://www.instagram.com/tarikuzzamansabbir/" target="_blank" rel="noopener noreferrer" class="social-icon text-pink-400" aria-label="Instagram"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465 2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.001 1.802c-2.396 0-2.71.01-3.662.054-1.005.046-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.852-.344 1.857-.044.952-.054 1.266-.054 3.662s.01 2.71.054 3.662c.046 1.005.207 1.504.344 1.857.182.466.398.8.748 1.15.35.35.683.566 1.15.748.353.137.852.3 1.857.344.952.044 1.266.054 3.662.054s2.71-.01 3.662-.054c1.005-.046 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.852.344-1.857.044-.952.054-1.266.054-3.662s-.01-2.71-.054-3.662c-.046-1.005-.207-1.504-.344-1.857-.182-.466-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.852-.3-1.857-.344-.952-.044-1.266-.054-3.662-.054zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg></a>
+                    <a href="https://x.com/Tarikuzzaman555" target="_blank" rel="noopener noreferrer" class="social-icon text-sky-400" aria-label="Twitter"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-blue-400" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                 </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+         <div id="page-home" class="page-content active">
+             <section class="animated-gradient-bg text-white py-16 px-6 text-center relative">
+                <h1 class="text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg font-stylish" data-aos="fade-down">Welcome to Sabbir Photography</h1>
+                <p class="text-lg md:text-xl mb-6 drop-shadow-md text-slate-300" data-aos="fade-up" data-aos-delay="100">Capturing Moments, Creating Memories</p>
+                <a href="#" onclick="showPage('gallery'); return false;" class="mt-4 inline-block bg-white text-pink-600 hover:bg-gray-200 font-semibold py-2 px-6 rounded-full transition duration-300 shadow-lg hover:shadow-xl" data-aos="zoom-in" data-aos-delay="200">Explore My Work</a>
+             </section>
+
+            <section class="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+                <div class="container mx-auto max-w-4xl text-center">
+                    <h2 class="text-4xl font-bold mb-6 section-title inline-block" data-aos="fade-up">Meet the Photographer</h2>
+                    <img src="img file/profile1.jpg" alt="Sabbir - Photographer" class="w-36 h-36 rounded-full mx-auto mb-6 shadow-lg border-4 border-slate-700" data-aos="zoom-in" onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/333333?text=Error';">
+                     <p class="text-slate-300 leading-relaxed text-lg mb-4" data-aos="fade-up" data-aos-delay="100">
+                        Hi, I'm Sabbir, a passionate photographer based in Maheshpur, Jhenaidah. I specialize in capturing the beauty of moments, from vibrant portraits to breathtaking landscapes. My goal is to tell stories through my lens.
+                    </p>
+                    <a href="#" onclick="showPage('contact'); return false;" class="gradient-button inline-block text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl mt-4" data-aos="fade-up" data-aos-delay="200">Get in Touch</a>
+                </div>
+            </section>
+
+             <section class="py-20 px-6 bg-gradient-to-br from-slate-800 to-slate-700">
+                 <div class="container mx-auto max-w-6xl">
+                    <h2 class="text-4xl font-bold text-center mb-12 section-title inline-block" data-aos="fade-up">My Specializations</h2>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                        <div class="md:w-1/2" data-aos="fade-right">
+                             <img src="img file/Portrait highlight.jpg" alt="Portrait Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                        <div class="md:w-1/2" data-aos="fade-left">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Portrait Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Capturing the essence and personality of individuals.</p>
+                             <a href="#" onclick="showGalleryAlbum('portraits'); return false;" class="gradient-button">View Portraits</a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                         <div class="md:w-1/2 order-2 md:order-1" data-aos="fade-right">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Landscape Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Exploring the beauty of nature and cityscapes.</p>
+                             <a href="#" onclick="showGalleryAlbum('landscapes'); return false;" class="gradient-button">View Landscapes</a>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2" data-aos="fade-left">
+                            <img src="img file/Landscape highlight.jpg" alt="Landscape Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                        <div class="md:w-1/2" data-aos="fade-right">
+                             <img src="img file/Street highlight.jpg" alt="Street Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                        <div class="md:w-1/2" data-aos="fade-left">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Street Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Capturing candid moments and the vibrant pulse of everyday life.</p>
+                             <a href="#" onclick="showGalleryAlbum('street'); return false;" class="gradient-button">View Street Photos</a>
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                         <div class="md:w-1/2 order-2 md:order-1" data-aos="fade-right">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Event Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Documenting the energy and emotion of special occasions.</p>
+                             <a href="#" onclick="showGalleryAlbum('events'); return false;" class="gradient-button">View Events</a>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2" data-aos="fade-left">
+                            <img src="img file/Event highlight.jpg" alt="Event Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                        <div class="md:w-1/2" data-aos="fade-right">
+                             <img src="img file/Wedding highlight.JPG" alt="Wedding Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                        <div class="md:w-1/2" data-aos="fade-left">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Wedding Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Preserving the love, joy, and details of your special day.</p>
+                             <a href="#" onclick="showGalleryAlbum('weddings'); return false;" class="gradient-button">View Weddings</a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                         <div class="md:w-1/2 order-2 md:order-1" data-aos="fade-right">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Fashion Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Creating stylish and compelling images for brands and individuals.</p>
+                             <a href="#" onclick="showGalleryAlbum('fashion'); return false;" class="gradient-button">View Fashion</a>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2" data-aos="fade-left">
+                            <img src="img file/Fashion highlight.jpg" alt="Fashion Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                        <div class="md:w-1/2" data-aos="fade-right">
+                             <img src="img file/Product highlight.jpg" alt="Product Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                        <div class="md:w-1/2" data-aos="fade-left">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Product Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Showcasing products with clean, professional, and appealing visuals.</p>
+                             <a href="#" onclick="showGalleryAlbum('products'); return false;" class="gradient-button">View Products</a>
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                         <div class="md:w-1/2 order-2 md:order-1" data-aos="fade-right">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Food Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Making food look as delicious as it tastes through expert styling and lighting.</p>
+                             <a href="#" onclick="showGalleryAlbum('food'); return false;" class="gradient-button">View Food Photos</a>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2" data-aos="fade-left">
+                            <img src="img file/food highlight.jpg" alt="Food Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                        <div class="md:w-1/2" data-aos="fade-right">
+                             <img src="img file/Wildlife highlight.jpg" alt="Wildlife Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                        <div class="md:w-1/2" data-aos="fade-left">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Wildlife Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Patiently observing and capturing the beauty of animals in their natural habitats.</p>
+                             <a href="#" onclick="showGalleryAlbum('wildlife'); return false;" class="gradient-button">View Wildlife</a>
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                         <div class="md:w-1/2 order-2 md:order-1" data-aos="fade-right">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Macro Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Revealing the intricate details of the small world around us.</p>
+                             <a href="#" onclick="showGalleryAlbum('macro'); return false;" class="gradient-button">View Macro</a>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2" data-aos="fade-left">
+                            <img src="img file/Macro highliht.jpg" alt="Macro Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                    </div>
+
+                     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+                        <div class="md:w-1/2" data-aos="fade-right">
+                             <img src="img file/Travel highlight.png" alt="Travel Highlight" class="highlight-img w-full" onerror="this.onerror=null; this.src='https://placehold.co/800x600/cccccc/333333?text=Error';">
+                        </div>
+                        <div class="md:w-1/2" data-aos="fade-left">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-3">Travel Photography</h3>
+                             <p class="text-slate-400 leading-relaxed mb-4">Documenting adventures, cultures, and landscapes from journeys near and far.</p>
+                             <a href="#" onclick="showGalleryAlbum('travel'); return false;" class="gradient-button">View Travel</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+                 <div class="container mx-auto max-w-4xl">
+                     <h2 class="text-4xl font-bold text-center mb-10 section-title inline-block" data-aos="fade-up">My Photographic Journey</h2>
+                     <p class="text-slate-300 leading-relaxed text-lg mb-6" data-aos="fade-up">
+                         My fascination with photography began years ago... [Your journey description]
+                     </p>
+                     <img src="img file/journey image 1.jpg" alt="Early photography gear" class="journey-img w-full md:w-3/4 lg:w-2/3 mx-auto my-8" data-aos="zoom-in-up" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Error';">
+                     <p class="text-slate-300 leading-relaxed text-lg mb-6" data-aos="fade-up">
+                         Over time, I upgraded my gear and honed my skills... [Continue your journey]
+                     </p>
+                     <img src="img file/journey image 2.jpg" alt="Travel photography example" class="journey-img w-full md:w-3/4 lg:w-2/3 mx-auto my-8" data-aos="zoom-in-up" data-aos-delay="100" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Error';">
+                     <p class="text-slate-300 leading-relaxed text-lg" data-aos="fade-up">
+                         Today, I strive to create images that are not only visually appealing... [Your current approach]
+                     </p>
+                 </div>
+            </section>
+         </div>
+
+         <div id="page-gallery" class="page-content">
+            <section class="py-16 px-4 bg-gradient-to-br from-slate-900 to-slate-800">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12 section-title inline-block" data-aos="fade-up">Gallery</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8" id="gallery-grid">
+                        </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="page-news" class="page-content">
+             <section id="news" class="py-16 px-4 bg-gradient-to-br from-slate-900 to-slate-800">
+                 <div class="container mx-auto max-w-5xl">
+                    <h2 class="text-3xl font-bold text-center mb-12 section-title inline-block" data-aos="fade-up">Recent News</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                         <div class="news-item bg-slate-800 p-6 rounded-lg shadow-md shadow-slate-700 hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">New Exhibition Announced</h3>
+                            <p class="text-sm text-slate-500 mb-3">May 15, 2025</p>
+                            <p class="text-slate-300 leading-relaxed">
+                                My upcoming photography exhibition will be held at Example Art Gallery. Everyone is invited! More details coming soon.
+                            </p>
+                            <a href="#" class="text-blue-400 hover:underline mt-4 inline-block">Read More</a>
+                        </div>
+                        <div class="news-item bg-slate-800 p-6 rounded-lg shadow-md shadow-slate-700 hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Workshop Series Launch</h3>
+                            <p class="text-sm text-slate-500 mb-3">April 28, 2025</p>
+                             <p class="text-slate-300 leading-relaxed">
+                                Starting a new workshop series covering techniques from basic to advanced photography. Limited seats available.
+                            </p>
+                            <a href="#" class="text-blue-400 hover:underline mt-4 inline-block">Read More</a>
+                        </div>
+                        <div class="news-item bg-slate-800 p-6 rounded-lg shadow-md shadow-slate-700 hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="300">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Featured in Magazine</h3>
+                            <p class="text-sm text-slate-500 mb-3">April 10, 2025</p>
+                             <p class="text-slate-300 leading-relaxed">
+                                Some of my work has been featured in the latest issue of 'Example Magazine'. Check it out!
+                            </p>
+                            <a href="#" class="text-blue-400 hover:underline mt-4 inline-block">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="page-contact" class="page-content">
+             <section id="contact" class="bg-gradient-to-br from-slate-800 to-slate-700 py-20 px-4">
+                 <div class="container mx-auto max-w-2xl text-center" data-aos="zoom-in">
+                    <h2 class="text-4xl font-bold mb-6 section-title inline-block">Get In Touch</h2>
+                    <p class="text-slate-300 mb-10 text-lg">
+                        Have a project in mind or just want to say hello? I'd love to hear from you!
+                    </p>
+                     <div class="bg-slate-800 p-8 rounded-lg shadow-xl shadow-slate-700 max-w-lg mx-auto backdrop-filter backdrop-blur-sm bg-opacity-80">
+                         <div class="space-y-5">
+                             <p class="text-lg flex items-center justify-center gap-3 text-slate-200">
+                                <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <a href="mailto:tarikuzzaman545@gmail.com" class="text-blue-400 hover:underline">tarikuzzaman545@gmail.com</a>
+                             </p>
+                             <p class="text-lg flex items-center justify-center gap-3 text-slate-200">
+                                <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                <span>01516545449</span>
+                             </p>
+                              <p class="text-lg flex items-center justify-center gap-3 text-slate-200">
+                                 <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                 <span>Maheshpur Bazar Para, Maheshpur, Jhenaidah</span>
+                              </p>
+                             <div class="flex justify-center space-x-4 pt-4">
+                                 <a href="https://www.facebook.com/tarikuzzaman.sabbir.01" target="_blank" rel="noopener noreferrer" class="social-icon text-blue-400" aria-label="Facebook Profile">
+                                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                                 </a>
+                                 <a href="https://www.facebook.com/tarikuzzamamsabbir" target="_blank" rel="noopener noreferrer" class="social-icon text-blue-400" aria-label="Facebook Page">
+                                     <i class="fa-solid fa-flag"></i>
+                                 </a>
+                                 <a href="https://www.instagram.com/tarikuzzamansabbir/" target="_blank" rel="noopener noreferrer" class="social-icon text-pink-400" aria-label="Instagram">
+                                      <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465 2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.001 1.802c-2.396 0-2.71.01-3.662.054-1.005.046-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.852-.344 1.857-.044.952-.054 1.266-.054 3.662s.01 2.71.054 3.662c.046 1.005.207 1.504.344 1.857.182.466.398.8.748 1.15.35.35.683.566 1.15.748.353.137.852.3 1.857.344.952.044 1.266.054 3.662.054s2.71-.01 3.662-.054c1.005-.046 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.852.344-1.857.044-.952.054-1.266.054-3.662s-.01-2.71-.054-3.662c-.046-1.005-.207-1.504-.344-1.857-.182-.466-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.852-.3-1.857-.344-.952-.044-1.266-.054-3.662-.054zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.802a3.333 3.333 0 110 6.666 3.333 3.333 0 010-6.666zm5.338-3.205a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg>
+                                  </a>
+                                  <a href="https://x.com/Tarikuzzaman555" target="_blank" rel="noopener noreferrer" class="social-icon text-sky-400" aria-label="Twitter">
+                                      <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                                  </a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-10 px-4">
+        <div class="container mx-auto text-center">
+             <div class="mb-4 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                 <a href="mailto:tarikuzzaman545@gmail.com" class="hover:text-blue-400 transition duration-300 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    tarikuzzaman545@gmail.com
+                 </a>
+                 <span class="hidden sm:inline">|</span>
+                 <span class="flex items-center gap-2">
+                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    01516545449
+                 </span>
+             </div>
+             <p>&copy; <span id="currentYear"></span> Sabbir Photography. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100] hidden">
+        <img id="lightbox-img" src="" alt="Lightbox Image" class="max-w-[90vw] max-h-[80vh] rounded shadow-lg">
+        <button id="lightbox-close" class="absolute top-5 right-5 text-white text-4xl font-bold leading-none hover:text-gray-300">&times;</button>
+        <button id="lightbox-prev" class="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-3xl bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75">&lt;</button>
+        <button id="lightbox-next" class="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-3xl bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75">&gt;</button>
+    </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize AOS Library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+        });
+
+        // --- Multi-Page Simulation Logic ---
+        const pages = document.querySelectorAll('.page-content');
+        const mainContent = document.getElementById('main-content');
+
+        function showPage(pageId) {
+            pages.forEach(page => page.classList.remove('active'));
+            const activePage = document.getElementById('page-' + pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+                 window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+                 AOS.refresh();
+            } else {
+                document.getElementById('page-home').classList.add('active'); // Default to home
+                 AOS.refresh();
+            }
+        }
+
+        // Show the home page by default on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            generateGalleryAlbums(); // Generate gallery items before showing page
+            showPage('home');
+        });
+        // --- End Multi-Page Simulation Logic ---
+
+        // --- Mobile Menu Logic ---
+        const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function openMenu() { mobileMenu.classList.remove('hidden'); }
+        function closeMenu() { mobileMenu.classList.add('hidden'); }
+
+        menuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        // --- End Mobile Menu Logic ---
+
+
+        // --- Lightbox Logic ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let currentAlbumImages = [];
+        let currentImageIndex = 0;
+
+        function openLightbox(images, index) {
+            if (!images || images.length === 0) { console.error("No images provided for lightbox."); return; }
+            currentAlbumImages = images;
+            currentImageIndex = index;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('visible');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('visible');
+            currentAlbumImages = [];
+        }
+
+        function updateLightboxImage() {
+            if (currentAlbumImages.length > 0) {
+                lightboxImg.src = currentAlbumImages[currentImageIndex];
+                lightboxPrev.style.display = currentAlbumImages.length > 1 ? 'block' : 'none';
+                lightboxNext.style.display = currentAlbumImages.length > 1 ? 'block' : 'none';
+            }
+        }
+
+        function showPrevImage() { if (currentAlbumImages.length <= 1) return; currentImageIndex = (currentImageIndex - 1 + currentAlbumImages.length) % currentAlbumImages.length; updateLightboxImage(); }
+        function showNextImage() { if (currentAlbumImages.length <= 1) return; currentImageIndex = (currentImageIndex + 1) % currentAlbumImages.length; updateLightboxImage(); }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', showPrevImage);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') showPrevImage();
+                else if (e.key === 'ArrowRight') showNextImage();
+                else if (e.key === 'Escape') closeLightbox();
+            }
+        });
+        // --- End Lightbox Logic ---
+
+        // --- Gallery Album Generation & Lightbox Binding ---
+        const galleryGrid = document.getElementById('gallery-grid');
+        const albumsData = [
+            // Bangla Comment: Niche proti object ekta album. albumId Home page er button er sathe milte hobe.
+            // Bangla Comment: title, description change korun. images array te comma diye shob chobir URL din.
+            { id: 'portraits', title: 'Portrait Photography', description: 'Capturing personality', images: ['img file/Portrait highlight.jpg', 'img file/p2.jpg', 'img file/p3.jpg','img file/sabbir.jpg'] },
+            { id: 'landscapes', title: 'Landscape Photography', description: 'Breathtaking views', images: ['img file/Landscape highlight.jpg', 'img file/l1.jpg', 'img file/l20.jpg', 'img file/l2.jpg', 'img file/l3.jpg', 'img file/l4.jpg', 'img file/l5.jpg'] },
+            { id: 'street', title: 'Street Photography', description: 'Moments from the urban jungle', images: ['Street highlight.jpg', 's2.jpg', 's3.jpg', 's4.jpg', 's5.jpg', 's6.jpg'] },
+            { id: 'events', title: 'Event Photography', description: 'Capturing special occasions', images: ['https://placehold.co/800x600/e63946/ffffff?text=Event+1', 'https://placehold.co/800x600/f15c67/ffffff?text=Event+2', 'https://placehold.co/800x600/fa8088/ffffff?text=Event+3'] },
+            { id: 'weddings', title: 'Wedding Photography', description: 'Cherishing your special day', images: ['https://placehold.co/800x600/77aaff/ffffff?text=Wed+1', 'https://placehold.co/800x600/88bbff/ffffff?text=Wed+2', 'https://placehold.co/800x600/99ccff/ffffff?text=Wed+3', 'https://placehold.co/800x600/aaccee/ffffff?text=Wed+4', 'https://placehold.co/800x600/bbddff/ffffff?text=Wed+5'] },
+            { id: 'fashion', title: 'Fashion Photography', description: 'Stylish and compelling images', images: ['https://placehold.co/800x600/d90429/edf2f4?text=Fashion+1', 'https://placehold.co/800x600/e63946/edf2f4?text=Fashion+2'] },
+            { id: 'products', title: 'Product Photography', description: 'Clean and professional visuals', images: ['https://placehold.co/800x600/8d99ae/ffffff?text=Prod+1', 'https://placehold.co/800x600/a0aab9/ffffff?text=Prod+2', 'https://placehold.co/800x600/b2bbc9/ffffff?text=Prod+3'] },
+            { id: 'food', title: 'Food Photography', description: 'Making food look delicious', images: ['https://placehold.co/800x600/bc6c25/ffffff?text=Food+1', 'https://placehold.co/800x600/d48a4a/ffffff?text=Food+2', 'https://placehold.co/800x600/e0a86f/ffffff?text=Food+3', 'https://placehold.co/800x600/fec89a/333333?text=Food+4'] },
+            { id: 'wildlife', title: 'Wildlife Photography', description: 'Creatures in their habitat', images: ['https://placehold.co/800x600/90be6d/ffffff?text=Wildlife+1', 'https://placehold.co/800x600/a1c98a/ffffff?text=Wildlife+2', 'https://placehold.co/800x600/b2d4a8/ffffff?text=Wildlife+3'] },
+            { id: 'macro', title: 'Macro Photography', description: 'Revealing intricate details', images: ['img file/Macro highliht.jpg', 'img file/m.jpg', 'img file/m2.jpg', 'img file/m3.jpg', 'img file/m4.jpg', 'img file/m5.jpg', 'img file/m6.jpg', 'img file/m7.jpg', 'img file/m8.jpg', 'img file/m9.jpg', 'img file/m10.jpg', 'img file/m11.jpg'] },
+            { id: 'travel', title: 'Travel Photography', description: 'Adventures near and far', images: ['https://placehold.co/800x600/ffcc66/333333?text=Travel+A', 'https://placehold.co/800x600/ffdd77/333333?text=Travel+B', 'https://placehold.co/800x600/ffee88/333333?text=Travel+C', 'https://placehold.co/800x600/ffff99/333333?text=Travel+D'] },
+        ];
+
+        function generateGalleryAlbums() {
+            if (!galleryGrid) return;
+            galleryGrid.innerHTML = ''; // Clear existing grid items
+
+            albumsData.forEach((album, index) => {
+                const albumDiv = document.createElement('div');
+                albumDiv.className = 'album-item bg-slate-800 rounded-lg shadow-lg shadow-slate-700 cursor-pointer';
+                albumDiv.setAttribute('data-aos', 'fade-up');
+                albumDiv.setAttribute('data-aos-delay', `${50 * (index % 6)}`);
+                albumDiv.setAttribute('data-album-id', album.id);
+                const allImageUrls = album.images.join(',');
+                albumDiv.setAttribute('data-images', allImageUrls);
+
+                const collageDiv = document.createElement('div');
+                collageDiv.className = 'fb-collage';
+
+                // Image 1 (Left)
+                const img1 = document.createElement('img');
+                img1.src = album.images[0] || 'https://placehold.co/300x300/cccccc/333333?text=No+Img';
+                img1.alt = `${album.title} 1`;
+                img1.className = 'fb-collage-img fb-collage-img-1';
+                img1.onerror = function() { this.src='https://placehold.co/300x300/cccccc/333333?text=Error'; };
+                collageDiv.appendChild(img1);
+
+                // Image 2 (Top Right)
+                const img2 = document.createElement('img');
+                img2.src = album.images[1] || 'https://placehold.co/300x300/cccccc/333333?text=No+Img';
+                img2.alt = `${album.title} 2`;
+                img2.className = 'fb-collage-img fb-collage-img-2';
+                img2.onerror = function() { this.src='https://placehold.co/300x300/cccccc/333333?text=Error'; };
+                collageDiv.appendChild(img2);
+
+                // Slot 4 (Bottom Right - Image or Overlay)
+                const slot4Div = document.createElement('div');
+                slot4Div.className = 'fb-collage-slot-4'; // Container for 4th slot
+
+                if (album.images.length >= 3) {
+                    const img3 = document.createElement('img');
+                    img3.src = album.images[2];
+                    img3.alt = `${album.title} 3`;
+                    img3.className = 'fb-collage-img'; // Image fills the container
+                    img3.onerror = function() { this.src='https://placehold.co/300x300/cccccc/333333?text=Error'; };
+                    slot4Div.appendChild(img3);
+
+                    if (album.images.length > 3) { // Show overlay only if more than 3 images
+                        const overlay = document.createElement('div');
+                        overlay.className = 'fb-collage-overlay visible'; // Make overlay visible
+                        overlay.textContent = `+${album.images.length - 3}`;
+                        slot4Div.appendChild(overlay);
+                    }
+                }
+                 // If less than 3 images, slot4Div remains empty (showing placeholder background)
+
+                collageDiv.appendChild(slot4Div);
+                albumDiv.appendChild(collageDiv);
+
+                // Add Title and Description
+                const textDiv = document.createElement('div');
+                textDiv.className = 'p-4';
+                textDiv.innerHTML = `
+                    <h3 class="font-semibold text-lg text-white">${album.title}</h3>
+                    <p class="text-sm text-slate-400">${album.description}</p>
+                `;
+                albumDiv.appendChild(textDiv);
+
+                // Add click listener for lightbox
+                albumDiv.addEventListener('click', () => {
+                    openLightbox(album.images, 0);
+                });
+
+                galleryGrid.appendChild(albumDiv);
+            });
+        }
+
+
+        // --- Function to show specific album from Home page ---
+        function showGalleryAlbum(albumId) {
+            showPage('gallery'); // Switch to gallery page first
+            setTimeout(() => {
+                const targetAlbum = document.querySelector(`.album-item[data-album-id='${albumId}']`);
+                if (targetAlbum) {
+                    const imagesAttr = targetAlbum.getAttribute('data-images');
+                     if (imagesAttr) {
+                        const images = imagesAttr.split(',').map(url => url.trim()).filter(url => url);
+                        if (images.length > 0) {
+                            openLightbox(images, 0);
+                        } else { console.error(`No images found in data-images for album ID: ${albumId}`); }
+                    } else { console.error(`data-images attribute not found for album ID: ${albumId}`); }
+                } else { console.error(`Album with ID '${albumId}' not found on gallery page.`); }
+            }, 150); // Increased delay slightly
+        }
+        // --- End Function ---
+
+    </script>
+
+</body>
+</html>
